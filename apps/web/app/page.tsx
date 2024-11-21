@@ -1,29 +1,15 @@
 "use client";
 import { Button } from "@repo/ui/button";
-import { useState } from "react";
 
 export default function Home() {
-  const [loading, setLoading] = useState(false);
-  const [data, setData] = useState({ name: "" });
-  const handleClick = async () => {
-    setLoading(true);
-    const res = await fetch("https://turbo-test-server.vercel.app/api/test");
-    const response = await res.json();
-    setData(() => {
-      return { name: response.data.name };
-    });
-    setLoading(false);
-  };
   return (
     <main>
-      <div className="text-red-600">Hello world</div>;
-      <Button children="Click me" onClick={handleClick} />
-      <div className="mt-5">
-        <p className="text-lg text-red">
-          The response from the api call is:{" "}
-          {loading ? <p>Loading....</p> : data.name}
-        </p>
-      </div>
+      <div className="text-red-600 mb-5">Hello world from a different app</div>
+      <Button
+        children="Click me"
+        className="px-4 py-2 bg-black text-white"
+        onClick={() => alert("Same button, just from a different app")}
+      />
     </main>
   );
 }
